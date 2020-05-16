@@ -72,6 +72,7 @@
         let generatedWord = generateWord();
         console.log(generatedWord)
         wordBank['current'] = generatedWord;
+        wordBank['guessedLetters'] = [];
         let numberOfBlanks = generatedWord.length;
         wordBank['blanksLeft'] = numberOfBlanks;
         if (length > 0) {
