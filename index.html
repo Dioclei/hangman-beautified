@@ -98,6 +98,7 @@
                     return parseInt(cur) + 1;
                   })
                   $('#tries-left').text(10);
+                  wordBank['guessed'].push(wordBank['current'])
                   generateBlanks();
                 }
               }
