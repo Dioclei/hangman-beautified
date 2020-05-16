@@ -60,24 +60,45 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script type="text/javascript">
       $(document).ready(function() {
-        let numberOfBlanks = generateWord().length;
-        if (length > 0) {
-          $('<h2 id="blank0" class="text-center px-2">_</h2>').appendTo('#blanks')
-        }
-        for (let i=1; i<numberOfBlanks; i++) {
-          $(`<h2 id="blank${i}" class="text-center px-2">_</h2>`).appendTo('#blanks')
-        }
+        generateBlanks();
       })
+      document.addEventListener('keypress', guess);
       function generateBlanks() {
         $('#blanks').empty();
-        let numberOfBlanks = generateWord().length;
+        let generatedWord = generateWord();
+        console.log(generatedWord)
+        wordBank['current'] = generatedWord;
+        let numberOfBlanks = generatedWord.length;
         if (length > 0) {
           $('<h2 id="blank0" class="text-center px-2">_</h2>').appendTo('#blanks')
         }
-        for (let i=1; i<numberOfBlanks; i++) {
+        for (let i=0; i<numberOfBlanks; i++) {
           $(`<h2 id="blank${i}" class="text-center px-2">_</h2>`).appendTo('#blanks')
         }
       }
+      function guess(key) {
+        let keyPressed = key['key']
+        let index = wordBank['current'].indexOf(keyPressed)
+        if (index != -1) {
+          for (i=0; i<wordBank['current'].length; i++) {
+            if (keyPressed == wordBank['current'][i]) {
+              $(`#blank${i}`).text(wordBank['current'][i])
+            }
+          }
+        } else {
+          $('#tries-left').text(function(i, cur) {
+            return cur - 1;
+          })
+          if (parseInt($('#tries-left').text()) == 0) {
+            generateBlanks();
+            $('#tries-left').text(10);
+            $('#failed').text(function(i, cur) {
+              return parseInt(cur) + 1;
+            })
+          }
+        }
+      }
+
     </script>
   </body>
 </html>
