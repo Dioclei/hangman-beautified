@@ -70,7 +70,6 @@
       function generateBlanks() {
         $('#blanks').empty();
         let generatedWord = generateWord();
-        console.log(generatedWord)
         wordBank['current'] = generatedWord;
         wordBank['guessedLetters'] = [];
         let numberOfBlanks = generatedWord.length;
@@ -99,6 +98,12 @@
                   })
                   $('#tries-left').text(10);
                   wordBank['guessed'].push(wordBank['current'])
+                  // this for loop doesnt do anything HELP
+                  for (let i=0; i<wordBank['unguessed'].length; i++) {
+                    if (wordBank['unguessed'][i] == wordBank['current']) {
+                      wordBank['unguessed'].splice(i, 1);
+                    }
+                  }
                   generateBlanks();
                 }
               }
