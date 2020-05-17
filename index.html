@@ -90,7 +90,7 @@
           let index = wordBank['current'].indexOf(keyPressed)
           if (index != -1) {
             for (i=0; i<wordBank['current'].length; i++) {
-              if (keyPressed == wordBank['current'][i]) {
+              if (keyPressed == wordBank['current'][i].toLowerCase()) {
                 $(`#blank${i}`).text(wordBank['current'][i])
                 wordBank['blanksLeft'] = wordBank['blanksLeft'] - 1
                 if (wordBank['blanksLeft'] == 0) {
