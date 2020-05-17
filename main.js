@@ -1,5 +1,5 @@
 var wordBank = {
-  unguessed: ["test", "paper", "pencil", "eraser", "examination", "grades", "top-scorer", "mathematics", "rubbish", "fail", "ungraded", "movies"],
+  unguessed: ["kimi no nawa", "weathering with you", "stein's gate", "demon slayer", "vinland saga", "glepnir", ],
   guessed: [],
   current: "",
   blanksLeft: 0,

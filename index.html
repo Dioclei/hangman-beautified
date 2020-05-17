@@ -59,9 +59,6 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
     <script type="text/javascript">
-
-      // TODO: Add ability to generate blanks for words with spaces
-
       $(document).ready(function() {
         generateBlanks();
       })
@@ -69,15 +66,17 @@
 
       function generateBlanks() {
         $('#blanks').empty();
-        let generatedWord = generateWord();
-        if (generatedWord != undefined) {
-          let length = generatedWord.length;
-          wordBank['current'] = generatedWord;
+        wordBank['current'] = generateWord()
+        if (wordBank['current'] != undefined) {
           wordBank['guessedLetters'] = [];
-          let numberOfBlanks = generatedWord.length;
-          wordBank['blanksLeft'] = numberOfBlanks;
-          for (let i=0; i<numberOfBlanks; i++) {
-            $(`<h2 id="blank${i}" class="text-center px-2">_</h2>`).appendTo('#blanks')
+          let numberOfChar = wordBank['current'].length;
+          wordBank['blanksLeft'] = wordBank['current'].match(/\S/g).length;
+          for (let i=0; i<numberOfChar; i++) {
+            if (wordBank['current'][i] !== ' ') {
+              $(`<h2 id="blank${i}" class="text-center px-2">_</h2>`).appendTo('#blanks')
+            } else {
+              $(`<h2 id="blank${i}" class="text-center px-2"> </h2>`).appendTo('#blanks')
+            }
           }
         } else {
           $(`<p class="text-center lead">All words have been guessed.</p>`).appendTo('#blanks')
@@ -95,17 +94,19 @@
                 $(`#blank${i}`).text(wordBank['current'][i])
                 wordBank['blanksLeft'] = wordBank['blanksLeft'] - 1
                 if (wordBank['blanksLeft'] == 0) {
-                  $('#solved').text(function(i, cur) {
-                    return parseInt(cur) + 1;
-                  })
-                  $('#tries-left').text(10);
-                  wordBank['guessed'].push(wordBank['current'])
-                  for (let i=0; i<wordBank['unguessed'].length; i++) {
-                    if (wordBank['unguessed'][i] == wordBank['current']) {
-                      wordBank['unguessed'].splice(i, 1);
+                  setTimeout(() => {
+                    $('#solved').text(function(i, cur) {
+                      return parseInt(cur) + 1;
+                    })
+                    $('#tries-left').text(10);
+                    wordBank['guessed'].push(wordBank['current'])
+                    for (let i=0; i<wordBank['unguessed'].length; i++) {
+                      if (wordBank['unguessed'][i] == wordBank['current']) {
+                        wordBank['unguessed'].splice(i, 1);
+                      }
                     }
-                  }
-                  generateBlanks();
+                    generateBlanks();
+                  }, 500)
                 }
               }
             }
