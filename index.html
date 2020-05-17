@@ -65,6 +65,7 @@
       document.addEventListener('keypress', guess);
 
       function generateBlanks() {
+        console.log('Words left', wordBank['unguessed'].length)
         $('#blanks').empty();
         wordBank['current'] = generateWord()
         if (wordBank['current'] != undefined) {
@@ -85,13 +86,12 @@
 
       function guess(key) {
         let keyPressed = key['key']
-        if (wordBank['guessedLetters'].indexOf(keyPressed) == -1 || wordBank['guessedLetters'].indexOf(keyPressed.toUpperCase()) == -1) {
+        if (wordBank['guessedLetters'].indexOf(keyPressed) == -1) {
           wordBank['guessedLetters'].push(keyPressed);
-          let index = wordBank['current'].indexOf(keyPressed)
+          let index = wordBank['current'].toLowerCase().indexOf(keyPressed)
           if (index != -1) {
             for (i=0; i<wordBank['current'].length; i++) {
-              console.log('key', keyPressed, keyPressed.toUpperCase())
-              if (keyPressed == wordBank['current'][i] || keyPressed.toUpperCase() == wordBank['current'][i]) {
+              if (keyPressed == wordBank['current'][i].toLowerCase()) {
                 $(`#blank${i}`).text(wordBank['current'][i])
                 wordBank['blanksLeft'] = wordBank['blanksLeft'] - 1
                 if (wordBank['blanksLeft'] == 0) {
