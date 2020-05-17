@@ -70,18 +70,19 @@
       function generateBlanks() {
         $('#blanks').empty();
         let generatedWord = generateWord();
-        let length = generatedWord.length;
-        wordBank['current'] = generatedWord;
-        wordBank['guessedLetters'] = [];
-        let numberOfBlanks = generatedWord.length;
-        wordBank['blanksLeft'] = numberOfBlanks;
-        if (length > 0) {
+        if (generatedWord != undefined) {
+          let length = generatedWord.length;
+          console.log(generatedWord, length)
+          wordBank['current'] = generatedWord;
+          wordBank['guessedLetters'] = [];
+          let numberOfBlanks = generatedWord.length;
+          wordBank['blanksLeft'] = numberOfBlanks;
           for (let i=0; i<numberOfBlanks; i++) {
             $(`<h2 id="blank${i}" class="text-center px-2">_</h2>`).appendTo('#blanks')
           }
         } else {
+          $(`<p class="text-center lead">All words have been guessed.</p>`).appendTo('#blanks')
         }
-
       }
 
       function guess(key) {
