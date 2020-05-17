@@ -1,5 +1,5 @@
 var wordBank = {
-  unguessed: ["kimi no nawa", "weathering with you", "stein's gate", "demon slayer", "vinland saga", "glepnir", ],
+  unguessed: ["Kimi No Nawa", "Weathering with You", "Stein's Gate", "Demon Slayer", "Vinland Saga", "Glepnir", "Mirai Nikki", "Kaguya-sama: Love is War", "Attack on Titan", "Fullmetal Alchemist: Brotherhood", "Hyouka", "Made in Abyss", "Her Blue Sky", "The Promised Neverland", "I Don't Want to Get Hurt, so I'll Max Out My Defense", "Mahou Shoujo Madoka Magica"],
   guessed: [],
   current: "",
   blanksLeft: 0,
