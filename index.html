@@ -85,8 +85,8 @@
       }
 
       function guess(key) {
-        let keyPressed = key['key']
-        if (wordBank['guessedLetters'].indexOf(keyPressed) == -1) {
+        if (isAllowedCharacter(key['key']) && wordBank['guessedLetters'].indexOf(key['key']) == -1) {
+          let keyPressed = key['key']
           wordBank['guessedLetters'].push(keyPressed);
           let index = wordBank['current'].toLowerCase().indexOf(keyPressed)
           if (index != -1) {
