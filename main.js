@@ -16,3 +16,7 @@ function generateWord() {
   let randIndex = Math.floor(Math.random() * wordBank['unguessed'].length)
   return wordBank['unguessed'][randIndex]
 }
+
+function isAllowedCharacter(key) {
+  return /[a-zA-Z-'":/]/.test(key)
+}
