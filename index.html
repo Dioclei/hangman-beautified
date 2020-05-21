@@ -140,7 +140,7 @@
 
       function focusKeyboard() {
         $('#mobileKeyboardInput').css('visibility', 'visible')
-        $('#mobileKeyboardInput').on('keypress', guess)
+        $('#mobileKeyboardInput').on('keydown', guess)
         $('#mobileKeyboardInput').focus()
         console.log('keyboard activated!')
       }
