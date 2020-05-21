@@ -16,7 +16,7 @@
   </head>
   <body class="container-fluid">
     <input type="text" id="mobileKeyboardInput" style="visibility: hidden">
-    <div class="d-flex flex-column h-100" onclick="$('#mobileKeyboardInput').focus()">
+    <div class="d-flex flex-column h-100" onclick="focusKeyboard()">
       <h1 class="text-center p-3">Hangman, Beautified</h1>
       <p class="lead text-center">Press any letter to begin guessing!</p>
       <p class="text-center font-weight-light" id="categoryName">Current Category</p>
@@ -136,6 +136,11 @@
             }
           }
         }
+      }
+
+      function focusKeyboard() {
+        $('#mobileKeyboardInput').focus()
+        console.log('keyboard focused!')
       }
 
     </script>
