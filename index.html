@@ -12,7 +12,6 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
-    <script type="text/javascript" src="main.js"></script>
     <title>Hangman, Beautified</title>
   </head>
   <body class="container-fluid">
@@ -20,6 +19,7 @@
     <div class="d-flex flex-column h-100" onclick="$('#mobileKeyboardInput').focus()">
       <h1 class="text-center p-3">Hangman, Beautified</h1>
       <p class="lead text-center">Press any letter to begin guessing!</p>
+      <p class="text-center font-weight-light" id="categoryName">Current Category</p>
       <div id="blanks" class="row flex-grow-1 align-items-center justify-content-center">
       </div>
       <div class="row">
@@ -59,21 +59,32 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js" integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="main.js"></script>
     <script type="text/javascript">
       $(document).ready(function() {
-        generateBlanks();
+        updateScreen('SCHOOL_CATEGORY')
       })
       document.addEventListener('keypress', guess);
 
+      function updateScreen(newCategoryString) {
+        updateCategory(newCategoryString)
+        showCategoryName();
+        generateBlanks();
+      }
+
+      function showCategoryName() {
+        $('#categoryName').text(`Current Category: ${currentWordBank['categoryName']}`)
+      }
+
       function generateBlanks() {
         $('#blanks').empty();
-        wordBank['current'] = generateWord()
-        if (!!wordBank['current']) {
-          wordBank['guessedLetters'] = [];
-          let numberOfChar = wordBank['current'].length;
-          wordBank['blanksLeft'] = wordBank['current'].match(/\S/g).length;
+        currentWordBank['current'] = generateWord()
+        if (!!currentWordBank['current']) {
+          currentWordBank['guessedLetters'] = [];
+          let numberOfChar = currentWordBank['current'].length;
+          currentWordBank['blanksLeft'] = currentWordBank['current'].match(/\S/g).length;
           for (let i=0; i<numberOfChar; i++) {
-            if (wordBank['current'][i] !== ' ') {
+            if (currentWordBank['current'][i] !== ' ') {
               $(`<h2 id="blank${i}" class="text-center px-2">_</h2>`).appendTo('#blanks')
             } else {
               $(`<h2 id="blank${i}" class="text-center px-2"> </h2>`).appendTo('#blanks')
@@ -86,25 +97,25 @@
 
 
       function guess(keyObj) {
-        if (isAllowedCharacter(keyObj['key']) && wordBank['guessedLetters'].indexOf(keyObj['key']) == -1) {
+        if (isAllowedCharacter(keyObj['key']) && currentWordBank['guessedLetters'].indexOf(keyObj['key']) == -1) {
           let key = keyObj['key']
-          wordBank['guessedLetters'].push(key);
-          let index = wordBank['current'].toLowerCase().indexOf(key)
+          currentWordBank['guessedLetters'].push(key);
+          let index = currentWordBank['current'].toLowerCase().indexOf(key)
           if (index != -1) {
-            for (i=0; i<wordBank['current'].length; i++) {
-              if (key == wordBank['current'][i].toLowerCase()) {
-                $(`#blank${i}`).text(wordBank['current'][i])
-                wordBank['blanksLeft'] = wordBank['blanksLeft'] - 1
-                if (wordBank['blanksLeft'] == 0) {
+            for (i=0; i<currentWordBank['current'].length; i++) {
+              if (key == currentWordBank['current'][i].toLowerCase()) {
+                $(`#blank${i}`).text(currentWordBank['current'][i])
+                currentWordBank['blanksLeft'] = currentWordBank['blanksLeft'] - 1
+                if (currentWordBank['blanksLeft'] == 0) {
                   setTimeout(() => {
                     $('#solved').text(function(i, cur) {
                       return parseInt(cur) + 1;
                     })
                     $('#tries-left').text(10);
-                    wordBank['guessed'].push(wordBank['current'])
-                    for (let i=0; i<wordBank['unguessed'].length; i++) {
-                      if (wordBank['unguessed'][i] == wordBank['current']) {
-                        wordBank['unguessed'].splice(i, 1);
+                    currentWordBank['guessed'].push(currentWordBank['current'])
+                    for (let i=0; i<currentWordBank['unguessed'].length; i++) {
+                      if (currentWordBank['unguessed'][i] == currentWordBank['current']) {
+                        currentWordBank['unguessed'].splice(i, 1);
                       }
                     }
                     generateBlanks();
