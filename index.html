@@ -98,7 +98,6 @@
       function guess(keyObj) {
         if (isAllowedCharacter(keyObj['key']) && currentWordBank['guessedLetters'].indexOf(keyObj['key']) == -1) {
           let key = keyObj['key']
-          console.log(key)
           currentWordBank['guessedLetters'].push(key);
           let index = currentWordBank['current'].toLowerCase().indexOf(key)
           if (index != -1) {
@@ -140,7 +139,7 @@
 
       function focusKeyboard() {
         $('#mobileKeyboardInput').css('visibility', 'visible')
-        $('#mobileKeyboardInput').on('keydown', guess)
+        $('#mobileKeyboardInput').keypress(guess)
         $('#mobileKeyboardInput').focus()
         console.log('keyboard activated!')
       }
