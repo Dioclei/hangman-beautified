@@ -16,7 +16,8 @@
     <title>Hangman, Beautified</title>
   </head>
   <body class="container-fluid">
-    <div class="d-flex flex-column h-100">
+    <input type="text" id="mobileKeyboardInput" style="visibility: hidden">
+    <div class="d-flex flex-column h-100" onclick="$('#mobileKeyboardInput').focus()">
       <h1 class="text-center p-3">Hangman, Beautified</h1>
       <p class="lead text-center">Press any letter to begin guessing!</p>
       <div id="blanks" class="row flex-grow-1 align-items-center justify-content-center">
@@ -65,10 +66,9 @@
       document.addEventListener('keypress', guess);
 
       function generateBlanks() {
-        console.log('Words left', wordBank['unguessed'].length)
         $('#blanks').empty();
         wordBank['current'] = generateWord()
-        if (wordBank['current'] != undefined) {
+        if (!!wordBank['current']) {
           wordBank['guessedLetters'] = [];
           let numberOfChar = wordBank['current'].length;
           wordBank['blanksLeft'] = wordBank['current'].match(/\S/g).length;
@@ -83,6 +83,7 @@
           $(`<p class="text-center lead">All words have been guessed.</p>`).appendTo('#blanks')
         }
       }
+
 
       function guess(keyObj) {
         if (isAllowedCharacter(keyObj['key']) && wordBank['guessedLetters'].indexOf(keyObj['key']) == -1) {
