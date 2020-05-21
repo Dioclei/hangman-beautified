@@ -141,10 +141,7 @@
       function focusKeyboard() {
         $('#mobileKeyboardInput').css('visibility', 'visible')
         $('#mobileKeyboardInput').focus()
-        setTimeout(() => {
-          $('#mobileKeyboardInput').css('visibility', 'hidden')
-          console.log('100')
-        }, 100);
+        $('#mobileKeyboardInput').css('opacity', 0)
         console.log('keyboard activated!')
       }
     </script>
