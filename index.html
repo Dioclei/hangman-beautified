@@ -15,11 +15,11 @@
     <title>Hangman, Beautified</title>
   </head>
   <body class="container-fluid">
-    <input type="text" id="mobileKeyboardInput" style="visibility: hidden">
-    <div class="d-flex flex-column h-100" onclick="$('#mobileKeyboardInput').focus()">
+    <div class="d-flex flex-column h-100" onclick="focusKeyboard()">
       <h1 class="text-center p-3">Hangman, Beautified</h1>
       <p class="lead text-center">Press any letter to begin guessing!</p>
       <p class="text-center font-weight-light" id="categoryName">Current Category</p>
+      <input type="text" id="mobileKeyboardInput" style="visibility: hidden">
       <div id="blanks" class="row flex-grow-1 align-items-center justify-content-center">
       </div>
       <div class="row">
@@ -136,6 +136,12 @@
             }
           }
         }
+      }
+
+      function focusKeyboard() {
+        $('#mobileKeyboardInput').css('visibility', 'visible')
+        $('#mobileKeyboardInput').focus()
+        $('#mobileKeyboardInput').css('visibility', 'hidden')
       }
 
     </script>
