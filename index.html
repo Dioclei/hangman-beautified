@@ -64,7 +64,6 @@
       $(document).ready(function() {
         updateScreen('SCHOOL_CATEGORY')
       })
-      document.addEventListener('keypress', guess);
 
       function updateScreen(newCategoryString) {
         updateCategory(newCategoryString)
@@ -140,6 +139,7 @@
 
       function focusKeyboard() {
         $('#mobileKeyboardInput').css('visibility', 'visible')
+        $('#mobileKeyboardInput').keypress(guess)
         $('#mobileKeyboardInput').focus()
         $('#mobileKeyboardInput').css('opacity', 0)
         console.log('keyboard activated!')
