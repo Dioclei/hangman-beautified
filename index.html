@@ -47,38 +47,38 @@
       <div class="d-flex justify-content-center">
         <button type="button" name="generate button" class="m-5 btn btn-primary" onclick="generateBlanks()">Generate Puzzle</button>
       </div>
-      <div id="mobileKeyboard" style="visibility: visible" class="px-3 pb-4 justify-content-center">
+      <div class="px-3 pb-4 justify-content-center">
         <div class="container row m-auto">
-          <button class="col btn btn-outline-dark m-1" type="button" name="keyboard" value="q" onclick="console.log(this.value)">q</button>
-          <button class="col btn btn-outline-dark m-1" type="button" name="keyboard" value="w">w</button>
-          <button class="col btn btn-outline-dark m-1" type="button" name="keyboard" value="e">e</button>
-          <button class="col btn btn-outline-dark m-1" type="button" name="keyboard" value="r">r</button>
-          <button class="col btn btn-outline-dark m-1" type="button" name="keyboard" value="t">t</button>
-          <button class="col btn btn-outline-dark m-1" type="button" name="keyboard" value="y">y</button>
-          <button class="col btn btn-outline-dark m-1" type="button" name="keyboard" value="u">u</button>
-          <button class="col btn btn-outline-dark m-1" type="button" name="keyboard" value="i">i</button>
-          <button class="col btn btn-outline-dark m-1" type="button" name="keyboard" value="o">o</button>
-          <button class="col btn btn-outline-dark m-1" type="button" name="keyboard" value="p">p</button>
+          <button id="q" class="col btn btn-outline-dark m-1 kb" type="button" value="q" onclick="guess(this.value)">Q</button>
+          <button id="w" class="col btn btn-outline-dark m-1 kb" type="button" value="w" onclick="guess(this.value)">W</button>
+          <button id="e" class="col btn btn-outline-dark m-1 kb" type="button" value="e" onclick="guess(this.value)">E</button>
+          <button id="r" class="col btn btn-outline-dark m-1 kb" type="button" value="r" onclick="guess(this.value)">R</button>
+          <button id="t" class="col btn btn-outline-dark m-1 kb" type="button" value="t" onclick="guess(this.value)">T</button>
+          <button id="y" class="col btn btn-outline-dark m-1 kb" type="button" value="y" onclick="guess(this.value)">Y</button>
+          <button id="u" class="col btn btn-outline-dark m-1 kb" type="button" value="u" onclick="guess(this.value)">U</button>
+          <button id="i" class="col btn btn-outline-dark m-1 kb" type="button" value="i" onclick="guess(this.value)">I</button>
+          <button id="o" class="col btn btn-outline-dark m-1 kb" type="button" value="o" onclick="guess(this.value)">O</button>
+          <button id="p" class="col btn btn-outline-dark m-1 kb" type="button" value="p" onclick="guess(this.value)">P</button>
         </div>
         <div class="container row m-auto">
-          <button class="col btn btn-outline-dark m-1" type="button" name="keyboard" value="a">a</button>
-          <button class="col btn btn-outline-dark m-1" type="button" name="keyboard" value="s">s</button>
-          <button class="col btn btn-outline-dark m-1" type="button" name="keyboard" value="d">d</button>
-          <button class="col btn btn-outline-dark m-1" type="button" name="keyboard" value="f">f</button>
-          <button class="col btn btn-outline-dark m-1" type="button" name="keyboard" value="g">g</button>
-          <button class="col btn btn-outline-dark m-1" type="button" name="keyboard" value="h">h</button>
-          <button class="col btn btn-outline-dark m-1" type="button" name="keyboard" value="j">j</button>
-          <button class="col btn btn-outline-dark m-1" type="button" name="keyboard" value="k">k</button>
-          <button class="col btn btn-outline-dark m-1" type="button" name="keyboard" value="l">l</button>
+          <button id="a" class="col btn btn-outline-dark m-1 kb" type="button" value="a" onclick="guess(this.value)">A</button>
+          <button id="s" class="col btn btn-outline-dark m-1 kb" type="button" value="s" onclick="guess(this.value)">S</button>
+          <button id="d" class="col btn btn-outline-dark m-1 kb" type="button" value="d" onclick="guess(this.value)">D</button>
+          <button id="f" class="col btn btn-outline-dark m-1 kb" type="button" value="f" onclick="guess(this.value)">F</button>
+          <button id="g" class="col btn btn-outline-dark m-1 kb" type="button" value="g" onclick="guess(this.value)">G</button>
+          <button id="h" class="col btn btn-outline-dark m-1 kb" type="button" value="h" onclick="guess(this.value)">H</button>
+          <button id="j" class="col btn btn-outline-dark m-1 kb" type="button" value="j" onclick="guess(this.value)">J</button>
+          <button id="k" class="col btn btn-outline-dark m-1 kb" type="button" value="k" onclick="guess(this.value)">K</button>
+          <button id="l" class="col btn btn-outline-dark m-1 kb" type="button" value="l" onclick="guess(this.value)">L</button>
         </div>
         <div class="container row m-auto">
-          <button class="col btn btn-outline-dark m-1" type="button" name="keyboard" value="z">z</button>
-          <button class="col btn btn-outline-dark m-1" type="button" name="keyboard" value="x">x</button>
-          <button class="col btn btn-outline-dark m-1" type="button" name="keyboard" value="c">c</button>
-          <button class="col btn btn-outline-dark m-1" type="button" name="keyboard" value="v">v</button>
-          <button class="col btn btn-outline-dark m-1" type="button" name="keyboard" value="b">b</button>
-          <button class="col btn btn-outline-dark m-1" type="button" name="keyboard" value="n">n</button>
-          <button class="col btn btn-outline-dark m-1" type="button" name="keyboard" value="m">m</button>
+          <button id="z" class="col btn btn-outline-dark m-1 kb" type="button" value="z" onclick="guess(this.value)">Z</button>
+          <button id="x" class="col btn btn-outline-dark m-1 kb" type="button" value="x" onclick="guess(this.value)">X</button>
+          <button id="c" class="col btn btn-outline-dark m-1 kb" type="button" value="c" onclick="guess(this.value)">C</button>
+          <button id="v" class="col btn btn-outline-dark m-1 kb" type="button" value="v" onclick="guess(this.value)">V</button>
+          <button id="b" class="col btn btn-outline-dark m-1 kb" type="button" value="b" onclick="guess(this.value)">B</button>
+          <button id="n" class="col btn btn-outline-dark m-1 kb" type="button" value="n" onclick="guess(this.value)">N</button>
+          <button id="m" class="col btn btn-outline-dark m-1 kb" type="button" value="m" onclick="guess(this.value)">M</button>
         </div>
       </div>
     </div>
@@ -97,13 +97,14 @@
     <script type="text/javascript">
       $(document).ready(function() {
         updateScreen('SCHOOL_CATEGORY')
-        updateScreenForMobileAndTablet()
       })
 
       function updateScreen(newCategoryString) {
+        $(document).off('keypress')
         updateCategory(newCategoryString)
         showCategoryName();
         generateBlanks();
+        $(document).on('keypress', (keyObj) => guess(keyObj['key']))
       }
 
       function showCategoryName() {
@@ -127,52 +128,67 @@
         } else {
           $(`<p class="text-center lead">All words have been guessed.</p>`).appendTo('#blanks')
         }
+        enableKeys();
       }
 
 
-      function guess(keyObj) {
-        if (isAllowedCharacter(keyObj['key']) && currentWordBank['guessedLetters'].indexOf(keyObj['key']) == -1) {
-          let key = keyObj['key']
-          currentWordBank['guessedLetters'].push(key);
-          let index = currentWordBank['current'].toLowerCase().indexOf(key)
-          if (index != -1) {
-            for (i=0; i<currentWordBank['current'].length; i++) {
-              if (key == currentWordBank['current'][i].toLowerCase()) {
-                $(`#blank${i}`).text(currentWordBank['current'][i])
-                currentWordBank['blanksLeft'] = currentWordBank['blanksLeft'] - 1
-                if (currentWordBank['blanksLeft'] == 0) {
-                  setTimeout(() => {
-                    $('#solved').text(function(i, cur) {
-                      return parseInt(cur) + 1;
-                    })
-                    $('#tries-left').text(10);
-                    currentWordBank['guessed'].push(currentWordBank['current'])
-                    for (let i=0; i<currentWordBank['unguessed'].length; i++) {
-                      if (currentWordBank['unguessed'][i] == currentWordBank['current']) {
-                        currentWordBank['unguessed'].splice(i, 1);
-                      }
+      function guess(key) {
+        if (typeof key !== 'string')
+          throw 'key is not string!'
+        if (!isAllowedCharacter(key))
+          return;
+        if (currentWordBank['guessedLetters'].indexOf(key) != -1)
+          return;
+        currentWordBank['guessedLetters'].push(key);
+        let index = currentWordBank['current'].toLowerCase().indexOf(key)
+        if (index != -1) {
+          for (i=0; i<currentWordBank['current'].length; i++) {
+            if (key == currentWordBank['current'][i].toLowerCase()) {
+              $(`#blank${i}`).text(currentWordBank['current'][i])
+              currentWordBank['blanksLeft'] = currentWordBank['blanksLeft'] - 1
+              if (currentWordBank['blanksLeft'] == 0) {
+                setTimeout(() => {
+                  $('#solved').text(function(i, cur) {
+                    return parseInt(cur) + 1;
+                  })
+                  $('#tries-left').text(10);
+                  currentWordBank['guessed'].push(currentWordBank['current'])
+                  for (let i=0; i<currentWordBank['unguessed'].length; i++) {
+                    if (currentWordBank['unguessed'][i] == currentWordBank['current']) {
+                      currentWordBank['unguessed'].splice(i, 1);
                     }
-                    generateBlanks();
-                  }, 500)
-                }
+                  }
+                  generateBlanks();
+                }, 500)
               }
             }
-          } else {
-            $('#tries-left').text(function(i, cur) {
-              return parseInt(cur) - 1;
+          }
+        } else {
+          $('#tries-left').text(function(i, cur) {
+            return parseInt(cur) - 1;
+          })
+          if (parseInt($('#tries-left').text()) == 0) {
+            generateBlanks();
+            $('#tries-left').text(10);
+            $('#failed').text(function(i, cur) {
+              return parseInt(cur) + 1;
             })
-            if (parseInt($('#tries-left').text()) == 0) {
-              generateBlanks();
-              $('#tries-left').text(10);
-              $('#failed').text(function(i, cur) {
-                return parseInt(cur) + 1;
-              })
-            }
           }
         }
+        disableKey(key)
       }
 
-      
+      function disableKey(key) {
+        if (typeof key !== "string")
+          throw 'key is not a string!'
+        $(`#${key}`).prop('disabled', true)
+      }
+
+      function enableKeys() {
+        $('.kb')
+        $('.kb').prop('disabled', false)
+      }
+
     </script>
   </body>
 </html>
