@@ -47,7 +47,7 @@
       <div class="d-flex justify-content-center">
         <button type="button" name="generate button" class="m-5 btn btn-primary" onclick="generateBlanks()">Generate Puzzle</button>
       </div>
-      <div id="mobileKeyboard" style="visibility: hidden" class="justify-content-center">
+      <div id="mobileKeyboard" style="visibility: visible" class="justify-content-center">
         <p class="text-center">Hello Mobile!</p>
       </div>
     </div>
@@ -148,6 +148,7 @@
       };
 
       function updateScreenForMobileAndTablet() {
+        console.log(window.mobileAndTabletCheck())
         window.mobileAndTabletCheck() ? $('#mobileKeyboard').css('visibility', 'visible')
                                       : $('#mobileKeyboard').css('visibility', 'hidden')
       }
