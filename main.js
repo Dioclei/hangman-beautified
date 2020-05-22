@@ -4,7 +4,6 @@ function Category(category, items) {
 }
 
 function WordBank(category) {
-  console.log(category)
   this.categoryName = category['categoryName']
   this.unguessed = category['items']
   this.guessed = []
@@ -28,22 +27,25 @@ const SCHOOL_CATEGORY = new Category(
   ["Paper", "Pencil", "Google Chrome", "Macbook Pro", "Notebook", "Water Bottle", "Table", "Whiteboard", "Marker", "Highlighter", "Frisbee", "Printer", "Colour Pencil", "Paintbrush", "Charcoal Eraser", "Letter of Appreciation", "Certificate of Excellence", "Examination", "School Fees", "Pocket Money", "Threadmill", "Free Weights", "Macaroni and Cheese", "Ham and Cheese Sandwich", "Mackerel Curry Rice", "Ice Milo", "Auditorium", "Android Studio"],
 )
 
-var currentWordBank;
+// Wordbanks that remember which word has already been guessed, even after category switching! (until page is refreshed)
+let animeWordBank = new WordBank(ANIME_CATEGORY)
+let leagueWordBank = new WordBank(LEAGUE_CATEGORY)
+let schoolWordBank = new WordBank(SCHOOL_CATEGORY)
+
+// Default WordBank
+var currentWordBank = schoolWordBank
 
 function updateCategory(newCategoryString) {
   switch (newCategoryString) {
     case 'ANIME_CATEGORY':
-      currentWordBank = new WordBank(ANIME_CATEGORY)
+      currentWordBank = animeWordBank
       break;
     case 'LEAGUE_CATEGORY':
-      currentWordBank = new WordBank(LEAGUE_CATEGORY)
+      currentWordBank = leagueWordBank
       break;
     case 'SCHOOL_CATEGORY':
-      currentWordBank = new WordBank(SCHOOL_CATEGORY)
-      break;
     default:
-      console.log('No category set, default category set as SCHOOL CATEGORY')
-      currentWordBank = new WordBank(SCHOOL_CATEGORY)
+      currentWordBank = schoolWordBank
       break;
   }
 }
