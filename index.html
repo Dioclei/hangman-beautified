@@ -104,12 +104,12 @@
     <script type="text/javascript" src="main.js"></script>
     <script type="text/javascript">
       $(document).ready(function() {
-        updateScreen('SCHOOL_CATEGORY')
         if (window.mobileCheck()) {
-          $('h1').css('font-size', '120%')
-          $('button').css('font-size', '50%')
+          $('h1').css('font-size', '1em')
+          $('button').css('font-size', '60%')
           $('p').css('font-size', '80%')
         }
+        updateScreen('SCHOOL_CATEGORY')
       })
 
       function updateScreen(newCategoryString) {
